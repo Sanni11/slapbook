@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark base */
+  --bg: 8 10 20;
+  /* deep navy */
+  --panel: 18 20 34;
+  /* card surface */
+  --text: 240 244 255;
+  /* near-white */
+  --muted: 170 176 200;
+  /* muted text */
+  --border: 58 64 92;
+  /* soft border */
+
+  /* Accents */
+  --accent1: 139 92 246;
+  /* purple */
+  --accent2: 34 211 238;
+  /* cyan */
+  --accent3: 244 114 182;
+  /* pink */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: rgb(var(--text));
+  /* Colorful background */
+  background:
+    radial-gradient(1200px 800px at 10% 10%, rgb(var(--accent2) / 0.18), transparent 60%),
+    radial-gradient(900px 700px at 90% 20%, rgb(var(--accent1) / 0.18), transparent 60%),
+    radial-gradient(900px 700px at 50% 90%, rgb(var(--accent3) / 0.14), transparent 60%),
+    linear-gradient(180deg, rgb(var(--bg)), rgb(var(--bg)));
+}
+
+/* Borders + inputs globally */
+.border {
+  border-color: rgb(var(--border)) !important;
+}
+
+input,
+textarea,
+select {
+  background: rgb(var(--panel) / 0.85);
+  color: rgb(var(--text));
+  border: 1px solid rgb(var(--border));
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(var(--accent2) / 0.25);
+  border-color: rgb(var(--accent2) / 0.6);
+}
+
+/* Make your existing cards look “glassy” without editing components */
+.rounded-2xl.border {
+  background: rgb(var(--panel) / 0.65);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 0.25);
+}
+
+/* Upgrade primary buttons that currently use bg-black */
+.bg-black {
+  background: linear-gradient(135deg, rgb(var(--accent1)), rgb(var(--accent2))) !important;
+}
+
+.bg-black:hover {
+  filter: brightness(1.05);
+}
+
+/* Better link color */
+a {
+  color: rgb(var(--accent2));
+}
+
+a:hover {
+  color: rgb(var(--accent3));
+}
+
+/* Selection */
+::selection {
+  background: rgb(var(--accent2) / 0.25);
+}
