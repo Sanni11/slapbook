@@ -271,6 +271,15 @@ export default function ProfilePage() {
                                                     <div className="mt-2 whitespace-pre-wrap">{p.content}</div>
                                                 </div>
                                                 {mine && (
+
+                                                    <button
+                                                      className="rounded-xl border px-3 py-2 text-sm"
+                                                      onClick={() => router.push(`/post/${encodeURIComponent(p.id)}`)}
+                                                    >
+                                                      Discuss
+                                                    </button>
+
+                                                    
                                                     <button className="rounded-xl border px-3 py-2 text-sm" onClick={() => deletePost(p.id)}>
                                                         Delete
                                                     </button>
