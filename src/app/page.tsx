@@ -222,6 +222,16 @@ export default function FeedPage() {
                       <div className="mt-1 whitespace-pre-wrap">{p.content}</div>
                     </div>
 
+                    <div className="mt-3 flex gap-2">
+                      <button
+                        className="rounded-xl border px-3 py-2 text-sm"
+                        onClick={() => router.push(`/post/${encodeURIComponent(p.id)}`)}
+                      >
+                        Discuss
+                      </button>
+                    </div>
+
+
                     <div className="text-right text-xs text-neutral-500">
                       <div>{new Date(p.created_at).toLocaleString()}</div>
                       {mine && (
