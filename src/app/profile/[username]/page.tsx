@@ -262,32 +262,41 @@ export default function ProfilePage() {
                                 <p className="text-sm text-neutral-600">No posts yet.</p>
                             ) : (
                                 posts.map((p) => {
-                                    const mine = me?.id === p.user_id;
-                                    return (
-                                        <article key={p.id} className="rounded-2xl border p-4">
-                                            <div className="flex items-start justify-between gap-3">
-                                                <div>
-                                                    <div className="text-xs text-neutral-500">{new Date(p.created_at).toLocaleString()}</div>
-                                                    <div className="mt-2 whitespace-pre-wrap">{p.content}</div>
-                                                </div>
-                                                {mine && (
-
-                                                    <button
-                                                      className="rounded-xl border px-3 py-2 text-sm"
-                                                      onClick={() => router.push(`/post/${encodeURIComponent(p.id)}`)}
-                                                    >
-                                                      Discuss
-                                                    </button>
-
-                                                    
-                                                    <button className="rounded-xl border px-3 py-2 text-sm" onClick={() => deletePost(p.id)}>
-                                                        Delete
-                                                    </button>
-                                                )}
-                                            </div>
-                                        </article>
-                                    );
+                                  const mine = me?.id === p.user_id;
+                                
+                                  return (
+                                    <article key={p.id} className="rounded-2xl border p-4">
+                                      <div className="flex items-start justify-between gap-3">
+                                        <div className="flex-1">
+                                          <div className="text-xs text-neutral-500">
+                                            {new Date(p.created_at).toLocaleString()}
+                                          </div>
+                                
+                                          <div className="mt-2 whitespace-pre-wrap">{p.content}</div>
+                                
+                                          <div className="mt-3 flex gap-2">
+                                            <button
+                                              className="rounded-xl border px-3 py-2 text-sm"
+                                              onClick={() => router.push(`/post/${encodeURIComponent(p.id)}`)}
+                                            >
+                                              Discuss
+                                            </button>
+                                
+                                            {mine && (
+                                              <button
+                                                className="rounded-xl border px-3 py-2 text-sm"
+                                                onClick={() => deletePost(p.id)}
+                                              >
+                                                Delete
+                                              </button>
+                                            )}
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </article>
+                                  );
                                 })
+
                             )}
                         </section>
                     ) : (
